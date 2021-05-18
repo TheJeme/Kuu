@@ -11,9 +11,9 @@ class CustomAlert extends React.Component {
         </span>{" "}
         <span className="alert-inner--text">
           <strong>Succes!</strong> This is your personal site for your own
-          countdowns! Your unique id is D5T2W3L9, save this or bookmark this
-          page to edit it in the future. DO NOT share this URL, instead, click
-          on here to{" "}
+          countdowns! Your unique id is <strong>D5T2W3L9</strong>, save this or
+          bookmark this page to edit it in the future. DO NOT share this URL,
+          instead, click on here to{" "}
           <a className="text-danger" href="/">
             <strong>copy link</strong>
           </a>{" "}
