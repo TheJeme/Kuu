@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 
 class CustomFooter extends React.Component {
   render() {

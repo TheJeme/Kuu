@@ -1,27 +1,32 @@
-import CustomNavbar from "./CustomNavbar";
-import CustomFooter from "./CustomFooter";
-import CustomCard from "./CustomCard";
-import CustomNewCard from "./CustomNewCard";
-import CustomAlert from "./CustomAlert";
+import React, { useState, useEffect } from "react";
+import firebase from "firebase";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+} from "react-router-dom";
+
+import Source from "./Source";
+import Main from "./Main";
+import FullscreenView from "./FullscreenView";
 
 function App() {
   return (
     <div>
-      <CustomNavbar />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <CustomAlert />
-      <CustomCard />
-      <CustomCard />
-      <CustomCard />
-      <CustomCard />
-      <CustomCard />
-      <CustomNewCard />
-      <CustomFooter />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Source />
+          </Route>
+          <Route path="/:id">
+            <Main />
+          </Route>
+          <Route path="/fullscreen">
+            <FullscreenView />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

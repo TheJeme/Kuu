@@ -1,5 +1,7 @@
 import React from "react";
 
+import CustomDateTimePicker from "./CustomDateTimePicker";
+
 import { Button, Modal } from "reactstrap";
 
 class CustomNewModal extends React.Component {
@@ -43,7 +45,10 @@ class CustomNewModal extends React.Component {
               <span aria-hidden={true}>×</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body ml-8">
+            <p ClassName="mb-1">Choose date and time</p>
+            <CustomDateTimePicker />
+          </div>
           <div className="modal-footer">
             <Button
               color="secondary"
@@ -51,9 +56,9 @@ class CustomNewModal extends React.Component {
               type="button"
               onClick={() => this.toggleModal("exampleModal")}
             >
-              Close
+              Cancel
             </Button>
-            <Button color="primary" type="button">
+            <Button color="primary" type="button" onClick={() => {}}>
               Submit
             </Button>
           </div>

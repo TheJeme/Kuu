@@ -2,7 +2,7 @@ import React from "react";
 
 import CustomNewModal from "./CustomNewModal";
 
-import { Button, Card } from "reactstrap";
+import { Card } from "reactstrap";
 
 class CustomNewCard extends React.Component {
   render() {
