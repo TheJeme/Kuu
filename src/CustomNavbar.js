@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import firebase from "firebase";
 
 import {
   UncontrolledCollapse,
@@ -18,7 +19,21 @@ function LoadExistingTab(searchText) {
   window.open(`/${searchText}`, "_self");
 }
 
-function createNewTab() {}
+function createNewTab() {
+  var db = firebase.firestore();
+  db.collection("test1")
+    .doc("0")
+    .set({
+      name: "uwu",
+      datetime: "2021, 5, 5",
+    })
+    .then(() => {
+      window.open(`/test1`, "_self");
+    })
+    .catch((error) => {
+      console.error("Error writing document: ", error);
+    });
+}
 
 function CustomNavbar() {
   const [searchText, setSearchText] = useState("");
