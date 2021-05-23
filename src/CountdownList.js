@@ -14,7 +14,9 @@ function CountdownList() {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          data.push(doc.data());
+          if (doc.id !== "created") {
+            data.push(doc.data());
+          }
         });
         setCountdowns(data);
       })
@@ -25,10 +27,11 @@ function CountdownList() {
 
   return (
     <div>
-      {countdowns.map((countdown) => (
+      {countdowns.map((countdown, index) => (
         <CustomCountdown
+          index={index}
           datetime={countdown.datetime}
-          eventName={countdown.name}
+          title={countdown.name}
         />
       ))}
     </div>

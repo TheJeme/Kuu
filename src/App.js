@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import firebase from "firebase";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Source from "./Source";
 import Main from "./Main";

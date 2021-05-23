@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import timediff from "timediff";
 import CustomDeleteModal from "./CustomDeleteModal";
@@ -19,13 +20,25 @@ function openFullScreen(countdown) {
 
 function CustomCountdown(props) {
   const [timeNow, setTimeNow] = useState(Date.now());
-  var timedifference = timediff(timeNow, new Date(props.datetime), "DHmS");
+  const { id } = useParams();
+  var timedifference = timediff(
+    timeNow,
+    new Date(
+      props.datetime.split(" ")[0],
+      props.datetime.split(" ")[1],
+      props.datetime.split(" ")[2],
+      props.datetime.split(" ")[3],
+      props.datetime.split(" ")[4]
+    ),
+    "DHmS"
+  );
   useEffect(() => {
     const interval = setInterval(() => setTimeNow(Date.now()), 1000);
     return () => {
       clearInterval(interval);
     };
   }, []);
+
   return (
     <Card className="mx-9 my-6 shadow">
       <CardBody>
@@ -44,8 +57,8 @@ function CustomCountdown(props) {
           >
             <i className="fa fa-angle-down" />
           </Button>
-          {props.eventName}
-          <CustomDeleteModal />
+          {props.title}
+          <CustomDeleteModal id={id} title={props.title} index={props.index} />
           <Button
             className="btn-icon float-right mr-2"
             color="secondary"
@@ -72,6 +85,7 @@ function CustomCountdown(props) {
             </Col>
           </Row>
         </Container>
+        <p className="text-center display-5">(2021/20/8 16:49)</p>
       </CardBody>
     </Card>
   );

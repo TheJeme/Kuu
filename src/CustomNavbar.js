@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import firebase from "firebase";
 
+import uniqid from "uniqid";
+
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -16,23 +18,14 @@ import {
 } from "reactstrap";
 
 function LoadExistingTab(searchText) {
-  window.open(`/${searchText}`, "_self");
+  if (searchText.length > 0) {
+    window.open(`/${searchText}`, "_self");
+  }
 }
 
 function createNewTab() {
-  var db = firebase.firestore();
-  db.collection("test1")
-    .doc("0")
-    .set({
-      name: "uwu",
-      datetime: "2021, 5, 5",
-    })
-    .then(() => {
-      window.open(`/test1`, "_self");
-    })
-    .catch((error) => {
-      console.error("Error writing document: ", error);
-    });
+  const newID = (uniqid() + uniqid()).substr(1, 10);
+  window.open(`/${newID}`, "_self");
 }
 
 function CustomNavbar() {
@@ -81,7 +74,11 @@ function CustomNavbar() {
           <Nav className="ml-lg-auto" navbar>
             <NavItem>
               <Row>
-                <Form className="navbar-form navbar-left" role="search">
+                <Form
+                  className="navbar-form navbar-left"
+                  role="search"
+                  onSubmit={(e) => e.preventDefault()}
+                >
                   <Input
                     type="text"
                     placeholder="Load existing"
