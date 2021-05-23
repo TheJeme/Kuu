@@ -7,7 +7,7 @@ function deleteCountdown(id, index) {
   var db = firebase.firestore();
   db.collection(id)
     .doc(index.toString())
-    .delete()
+    .set({ deleted: false })
     .then(() => {
       window.location.reload();
     });

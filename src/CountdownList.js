@@ -14,7 +14,7 @@ function CountdownList() {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          if (doc.id !== "created") {
+          if (doc.id !== "created" && doc.data().deleted !== false) {
             data.push(doc.data());
           }
         });
@@ -26,6 +26,7 @@ function CountdownList() {
     <div>
       {countdowns.map((countdown) => (
         <CustomCountdown
+          key={countdown.index}
           index={countdown.index}
           datetime={countdown.datetime}
           title={countdown.name}

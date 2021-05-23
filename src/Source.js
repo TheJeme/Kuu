@@ -43,9 +43,9 @@ function Source() {
       >
         {" "}
         <p className="display-3 text-center">
-          There are already {listCount} personal countdownlists created.
+          There are already {listCount} personal countdown lists created.
           <br />
-          Create your personal list for your countdowns now for free.
+          Create your personal list for your countdowns for free.
         </p>
         <div className="d-flex justify-content-center mt-4">
           <Button onClick={() => createNewTab()}>Get Started!</Button>
