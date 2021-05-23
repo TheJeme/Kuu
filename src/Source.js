@@ -1,8 +1,12 @@
-import CustomNavbar from "./CustomNavbar";
-
+import uniqid from "uniqid";
 import { Button } from "reactstrap";
 
-function createNewTab() {}
+import CustomNavbar from "./CustomNavbar";
+
+function createNewTab() {
+  const newID = (uniqid() + uniqid()).substr(1, 10);
+  window.open(`/${newID}`, "_self");
+}
 
 function Source() {
   return (
@@ -17,7 +21,7 @@ function Source() {
         {" "}
         <p className="display-3 text-center">Create new List.</p>
         <div className="d-flex justify-content-center mt-4">
-          <Button>Get Started!</Button>
+          <Button onClick={() => createNewTab()}>Get Started!</Button>
         </div>
       </div>
     </div>

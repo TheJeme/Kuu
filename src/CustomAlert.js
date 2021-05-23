@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { UncontrolledAlert } from "reactstrap";
+import CopyToClipboard from "react-copy-to-clipboard";
+
+import { UncontrolledAlert, UncontrolledTooltip } from "reactstrap";
 
 function CustomAlert() {
   const { id } = useParams();
+  const [state, setState] = useState(false);
   return (
     <UncontrolledAlert className="mx-9" color="primary" fade={false}>
       <span className="alert-inner--icon">
@@ -15,9 +18,21 @@ function CustomAlert() {
         countdowns! Your unique id is <strong>{id}</strong>, save this or
         bookmark this page to edit it in the future. DO NOT share this URL,
         instead, click on here to{" "}
-        <a className="text-danger" href="/">
-          <u>copy link</u>
-        </a>{" "}
+        <CopyToClipboard
+          text={window.location.href}
+          onCopy={() => setState(true)}
+        >
+          <span
+            style={{ cursor: "pointer" }}
+            id="linkcopy"
+            className="text-danger"
+          >
+            copy link
+          </span>
+        </CopyToClipboard>{" "}
+        <UncontrolledTooltip delay={0} trigger="hover focus" target="linkcopy">
+          {state ? "Copied succesfully" : "Copy To Clipboard"}
+        </UncontrolledTooltip>
         for others.
       </span>
     </UncontrolledAlert>
