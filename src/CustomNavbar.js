@@ -18,7 +18,11 @@ import {
 } from "reactstrap";
 
 function LoadExistingTab(searchText) {
-  if (searchText.length > 0) {
+  if (
+    searchText.length > 0 &&
+    searchText.length < 60 &&
+    !searchText.includes(" ")
+  ) {
     window.open(`/${searchText}`, "_self");
   }
 }
@@ -89,6 +93,7 @@ function CustomNavbar() {
                   <Input
                     type="text"
                     placeholder="Load existing"
+                    pattern="[a-zA-Z0-9-]+"
                     onChange={(e) => setSearchText(e.target.value)}
                   />
                 </Form>
