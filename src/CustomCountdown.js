@@ -46,26 +46,12 @@ function CustomCountdown(props) {
           <Button
             className="btn-icon float-left"
             color="secondary"
-            onClick={() => {}}
-          >
-            <i className="fa fa-angle-up" />
-          </Button>
-          <Button
-            className="btn-icon float-left"
-            color="secondary"
-            onClick={() => {}}
-          >
-            <i className="fa fa-angle-down" />
-          </Button>
-          {props.title}
-          <CustomDeleteModal id={id} title={props.title} index={props.index} />
-          <Button
-            className="btn-icon float-right mr-2"
-            color="secondary"
             onClick={(e) => openFullScreen(id, props.index)}
           >
             <i className="fa fa-desktop" />
           </Button>
+          {props.title}
+          <CustomDeleteModal id={id} title={props.title} index={props.index} />
         </CardTitle>
         <Container className="mb-4">
           <Row>
