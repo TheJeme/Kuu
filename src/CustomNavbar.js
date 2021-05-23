@@ -23,8 +23,15 @@ function LoadExistingTab(searchText) {
   }
 }
 
-function createNewTab() {
+async function createNewTab() {
   const newID = (uniqid() + uniqid()).substr(1, 10);
+
+  const db = firebase.firestore();
+  const dataRef = db.collection("data-170300303").doc("data");
+
+  await dataRef.update({
+    listcount: firebase.firestore.FieldValue.increment(1),
+  });
   window.open(`/${newID}`, "_self");
 }
 

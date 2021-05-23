@@ -92,7 +92,7 @@ function CustomNewModal() {
           <p className="m-1">Title</p>
           <Input
             type="text"
-            placeholder=""
+            maxlength="30"
             onChange={(e) => setTitleText(e.target.value)}
           />
         </div>

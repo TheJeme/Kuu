@@ -16,8 +16,7 @@ function CustomAlert() {
       <span className="alert-inner--text">
         <strong>Succes!</strong> This is your personal site for your own
         countdowns! Your unique id is <strong>{id}</strong>, save this or
-        bookmark this page to edit it in the future. DO NOT share this URL,
-        instead, click on here to{" "}
+        bookmark this page to visit it in the future.{" "}
         <CopyToClipboard
           text={window.location.href}
           onCopy={() => setState(true)}
@@ -27,13 +26,12 @@ function CustomAlert() {
             id="linkcopy"
             className="text-danger"
           >
-            copy link
+            Copy link
           </span>
         </CopyToClipboard>{" "}
         <UncontrolledTooltip delay={0} trigger="hover focus" target="linkcopy">
           {state ? "Copied succesfully" : "Copy To Clipboard"}
         </UncontrolledTooltip>
-        for others.
       </span>
     </UncontrolledAlert>
   );

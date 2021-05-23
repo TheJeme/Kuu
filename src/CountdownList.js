@@ -19,17 +19,14 @@ function CountdownList() {
           }
         });
         setCountdowns(data);
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
       });
   }, [id]);
 
   return (
     <div>
-      {countdowns.map((countdown, index) => (
+      {countdowns.map((countdown) => (
         <CustomCountdown
-          index={index}
+          index={countdown.index}
           datetime={countdown.datetime}
           title={countdown.name}
         />

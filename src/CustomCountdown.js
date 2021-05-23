@@ -14,8 +14,8 @@ import {
   Col,
 } from "reactstrap";
 
-function openFullScreen(countdown) {
-  window.open("/fullscreen", "_blank");
+function openFullScreen(id, index) {
+  window.open(`/${id}/${index}`, "_blank");
 }
 
 function CustomCountdown(props) {
@@ -62,7 +62,7 @@ function CustomCountdown(props) {
           <Button
             className="btn-icon float-right mr-2"
             color="secondary"
-            onClick={(e) => openFullScreen(e.target.value)}
+            onClick={(e) => openFullScreen(id, props.index)}
           >
             <i className="fa fa-desktop" />
           </Button>
@@ -85,7 +85,19 @@ function CustomCountdown(props) {
             </Col>
           </Row>
         </Container>
-        <p className="text-center display-5">(2021/20/8 16:49)</p>
+        <p className="text-center display-5">
+          ({props.datetime.split(" ")[2]}.
+          {parseInt(props.datetime.split(" ")[1]) + 1}.
+          {props.datetime.split(" ")[0]}{" "}
+          {props.datetime.split(" ")[3] < 10
+            ? "0" + props.datetime.split(" ")[3]
+            : props.datetime.split(" ")[3]}
+          :
+          {props.datetime.split(" ")[4] < 10
+            ? "0" + props.datetime.split(" ")[4]
+            : props.datetime.split(" ")[4]}
+          )
+        </p>
       </CardBody>
     </Card>
   );

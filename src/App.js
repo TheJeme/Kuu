@@ -13,11 +13,11 @@ function App() {
           <Route exact path="/">
             <Source />
           </Route>
+          <Route path="/:id/:index">
+            <FullscreenView />
+          </Route>
           <Route path="/:id">
             <Main />
-          </Route>
-          <Route path="/fullscreen">
-            <FullscreenView />
           </Route>
         </Switch>
       </Router>
